@@ -2,7 +2,7 @@ from flask import Flask, request, redirect, url_for, render_template_string
 from datetime import datetime
 import json
 import os
-from urllib.parse import quote
+from urllib.parse import quote, unquote
 
 
 # ============================================================
@@ -1062,9 +1062,15 @@ def home():
     for category in categories:
 
         if category == "ทั้งหมด":
-            category_url = "/"
+
+            category_url = url_for("home")
+
         else:
-            category_url = "/category/" + quote(category)
+
+            category_url = url_for(
+                "category",
+                category=category
+            )
 
         category_html += f"""
         <a
@@ -1208,27 +1214,16 @@ def search():
 # กรองหมวดหมู่
 # ============================================================
 
-@app.route("/category/<category>")
+@app.route("/category/<path:category>")
 def category(category):
 
     remove_expired_bookings()
 
-
-    if category == "ทั้งหมด":
-
-        return redirect(url_for("home"))
-
-
     result = [
-
         restaurant
-
         for restaurant in restaurants
-
         if category in restaurant["category"]
-
     ]
-
 
     content = f"""
 
@@ -1243,22 +1238,18 @@ def category(category):
 
     </div>
 
-
     <h2 class="section-title">
         🍽️ หมวดหมู่: {category}
     </h2>
-
 
     {restaurant_cards(result)}
 
     """
 
-
     return render_template_string(
         BASE_HTML,
         content=content
     )
-
 
 # ============================================================
 # หน้าร้านอาหาร
