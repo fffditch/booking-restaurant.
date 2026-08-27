@@ -10,7 +10,7 @@ import os
 
 app = Flask(__name__)
 
-BOOKING_FILE = "bookings.json"
+BOOKING_FILE = "/tmp/bookings.json"
 
 
 # ============================================================
