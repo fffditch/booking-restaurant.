@@ -1046,16 +1046,12 @@ def home():
     categories = [
         "ทั้งหมด",
         "อาหารไทย",
-        "อาหารอีสาน",
         "คาเฟ่",
         "นั่งชิล",
         "บุฟเฟ่ต์",
         "อาหารป่า",
         "อาหารญี่ปุ่น",
-        "กะเพรา",
-        "ราเมง",
-        "ก๋วยเตี๋ยว",
-        "สเต๊ก"
+        
     ]
 
 
@@ -1063,11 +1059,23 @@ def home():
 
     for category in categories:
 
+          if category == "ทั้งหมด":
+
+               category_url = "/"
+              
+          else:
+
+               category_url = (
+                "/category/"
+                + quote(category)
+            )
+
+
         category_html += f"""
 
         <a
             class="category"
-            href="/category/{quote(category)}"
+            href="{category_url}"
         >
             {category}
         </a>
