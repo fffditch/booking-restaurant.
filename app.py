@@ -2,6 +2,7 @@ from flask import Flask, request, redirect, url_for, render_template_string
 from datetime import datetime
 import json
 import os
+from urllib.parse import quote
 
 
 # ============================================================
@@ -1066,7 +1067,7 @@ def home():
 
         <a
             class="category"
-            href="/category/{category}"
+            href="/category/{quote(category)}"
         >
             {category}
         </a>
