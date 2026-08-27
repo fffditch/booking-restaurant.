@@ -10,6 +10,7 @@ from urllib.parse import quote
 # ============================================================
 
 app = Flask(__name__)
+application = app
 
 BOOKING_FILE = "/tmp/bookings.json"
 
