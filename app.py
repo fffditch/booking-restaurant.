@@ -1060,28 +1060,19 @@ def home():
 
     for category in categories:
 
-          if category == "ทั้งหมด":
+    if category == "ทั้งหมด":
+        category_url = "/"
+    else:
+        category_url = "/category/" + quote(category)
 
-               category_url = "/"
-              
-          else:
-
-               category_url = (
-                "/category/"
-                + quote(category)
-            )
-
-
-        category_html += f"""
-
-        <a
-            class="category"
-            href="{category_url}"
-        >
-            {category}
-        </a>
-
-        """
+    category_html += f"""
+    <a
+        class="category"
+        href="{category_url}"
+    >
+        {category}
+    </a>
+    """
 
 
     content = f"""
