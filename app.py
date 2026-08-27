@@ -1217,6 +1217,8 @@ def search():
 @app.route("/category/<path:category>")
 def category(category):
 
+    category = unquote(category)
+
     remove_expired_bookings()
 
     result = [
