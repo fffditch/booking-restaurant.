@@ -1058,7 +1058,9 @@ def home():
 
     category_html = ""
 
-    for category in categories:
+    category_html = ""
+
+for category in categories:
 
     if category == "ทั้งหมด":
         category_url = "/"
